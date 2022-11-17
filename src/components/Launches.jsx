@@ -60,44 +60,20 @@ export default function Launches() {
     const files = e.dataTransfer.files;
     if (files.length) {
       let file = files[0];
-      if (["xlsx", "xls"]?.includes(fileType(file?.name))) {
-        if (type === "project") setProjectSheet([file]);
-        // if (type === "pdf") setOrgSheet([file]);
-        // if (type === "launch") setLaunchSheet([file]);
-      } 
       if (["pdf"]?.includes(fileType(file?.name))) {
-        // if (type === "project") setProjectSheet([file]);
         if (type === "pdf") setPdfSheet([file]);
-        // if (type === "launch") setLaunchSheet([file]);
-      } 
-      else {
-        alert({
-          flag: true,
-          type: "error",
-          msg: "Please select correct file format.",
-        });
+      } else {
+        alert("Please select correct file format.");
       }
     }
   };
   const excelFileSelected = (val, type) => {
     if (val) {
       let file = val[0];
-      if (["xlsx", "xls"]?.includes(fileType(file?.name))) {
-        if (type === "project") setProjectSheet([file]);
-        // if (type === "pdf") setOrgSheet([file]);
-        // if (type === "launch") setLaunchSheet([file]);
-      } 
       if (["pdf"]?.includes(fileType(file?.name))) {
-        // if (type === "project") setProjectSheet([file]);
         if (type === "pdf") setPdfSheet([file]);
-        // if (type === "launch") setLaunchSheet([file]);
-      } 
-      else {
-        alert({
-          flag: true,
-          type: "error",
-          msg: "Please select correct file format.",
-        });
+      } else {
+        alert("Please select correct file format.");
       }
     }
   };
@@ -135,9 +111,10 @@ export default function Launches() {
               </div>
             </div>
             <section className="modal_body">
-              <section className="combine_input_section">
-              <section className="combine_input_section_input_group">
-                  <label >
+              {/* combine_input_section */}
+              <section className="">
+                {/* <section className="combine_input_section_input_group">
+                  <label>
                     Upload Project Structure<sup className="mandatory">*</sup>
                   </label>
                   {projectSheet?.length === 0 ? (
@@ -188,7 +165,7 @@ export default function Launches() {
                     <p style={{ marginTop: "20px" }}>
                       <span>{projectSheet[0]?.name}</span>
                       <span className="file-size">
-                        {/* ({fileSize(projectSheet[0]?.size)}) */}
+                        ({fileSize(projectSheet[0]?.size)})
                       </span>
                       <span
                         className="file-remove cp"
@@ -204,9 +181,9 @@ export default function Launches() {
                       </span>
                     </p>
                   )}
-                </section>
+                </section> */}
                 <section className="combine_input_section_input_group">
-                  <label >
+                  <label>
                     Upload pdf Project <sup className="mandatory">*</sup>
                   </label>
                   {pdfSheet?.length === 0 ? (
@@ -235,10 +212,7 @@ export default function Launches() {
                           accept=".pdf"
                           multiple
                           onChange={() =>
-                            excelFileSelected(
-                              orgSheetRef.current.files,
-                              "pdf"
-                            )
+                            excelFileSelected(orgSheetRef.current.files, "pdf")
                           }
                         />
                       </section>
@@ -275,7 +249,6 @@ export default function Launches() {
                   )}
                 </section>
               </section>
-              
             </section>
           </div>
         </Box>
@@ -305,7 +278,8 @@ export default function Launches() {
 </div> */
 }
 
-{/* <section className="combine_input_section_input_group">
+{
+  /* <section className="combine_input_section_input_group">
                   <label>
                     Upload Project Structure<sup className="mandatory">*</sup>
                   </label>
@@ -339,4 +313,5 @@ export default function Launches() {
                       <p className="link cp">Browse file from device</p>
                     </section>
                   </>
-                </section> */}
+                </section> */
+}
